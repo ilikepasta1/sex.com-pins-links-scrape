@@ -20,7 +20,7 @@ do
 	for PIN_LINE in $RAW_SEX_PINS
 	do
 		PIN_CONTAINS=$(echo $PIN_LINE | grep "/pin/")
-		if [[ -n $PIN_CONTAINS ]]
+		if [[ ! -z $PIN_CONTAINS ]]
 		then
 			PINS_COUNT=$(($PINS_COUNT + 1))
 			echo $PIN_LINE >> refined-links.txt
