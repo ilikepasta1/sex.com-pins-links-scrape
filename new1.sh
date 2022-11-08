@@ -3,11 +3,10 @@ if [[ -f "sex-pins-links.txt" ]]
 then
 	echo "removing and creating 'sex-pins-links.txt'.."
 	rm "sex-pins-links.txt"
-	touch "sex-pins-links.txt"
 else
 	echo "creating 'sex-pins-links.txt'.."
-	touch "sex-pins-links.txt"
 fi
+touch "sex-pins-links.txt"
 for PAGENUMBER in {1..55}
 do
 	echo "creating 'refined-links.txt'.."
