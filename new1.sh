@@ -12,7 +12,8 @@ do
 	echo "creating 'refined-links.txt'.."
 	echo "" > refined-links.txt
 	echo "getting 'www.sex.com/pins?page=$PAGENUMBER' html webpage.."
-	wget "https://www.sex.com/pins?page=$PAGENUMBER" -qO sex-pins.html
+	#wget "https://www.sex.com/pins?page=$PAGENUMBER" -qO sex-pins.html
+	curl -sSL "https://www.sex.com/pins?page=$PAGENUMBER" > sex-pins.html
 	RAW_SEX_PINS=$(cat sex-pins.html | grep "/pin/")
 	PINS_COUNT=0
 	echo "getting pins links.."
