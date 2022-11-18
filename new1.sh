@@ -1,3 +1,4 @@
+#!/bin/bash
 WAIT_NUMBER=0
 FILE_NUMBER=1
 while [[ -f "sex-pins-links$FILE_NUMBER.txt" ]]; do
