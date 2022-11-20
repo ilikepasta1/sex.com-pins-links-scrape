@@ -31,7 +31,7 @@ for PAGENUMBER in {1..55}; do
                 if [[ ! ${PINS_ARRAY[*]} =~ ${PIN} ]]; then
                         PINS_ARRAY+=($PIN)
                         PINS_ARRAY_NUMBER=$((PINS_ARRAY_NUMBER + 1))
-                        echo "www.sex.com$PIN" >> "sex-pins-links$FILENUMBER.txt"
+                        echo "www.sex.com$PIN" >> "sex-pins-links$FILE_NUMBER.txt"
                 fi
         done
         ALL_LINKS_NUMBER=$(wc -l "sex-pins-links$FILE_NUMBER.txt")
