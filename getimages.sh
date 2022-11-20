@@ -1,4 +1,5 @@
 #!/bin/bash
+DEFAULT_PATH="/home/gabe/Pictures/unknown.png"
 LINKSFILENUMBER=1
 while [[ -f "sex-pins-links$LINKSFILENUMBER.txt" ]]; do
 	LINKSFILENUMBER=$(($LINKSFILENUMBER+1))
@@ -26,13 +27,19 @@ while [[ -f "sex-pins-data$NUMBERINPUT-$DATAFILENUMBER.txt" ]]; do
 done
 touch "sex-pins-data$NUMBERINPUT-$DATAFILENUMBER.txt"
 LINECOUNT=0
+LINKS=$(cat "sex-pins-links$NUMBERINPUT.txt")
 for LINE in $LINKS; do
 	curl -sSL $LINE > tempfile.html
 	cat tempfile.html | grep thumbnailUrl | grep content > tempfile0.txt
 	TEMPVAR=$(grep -o '".*"' "tempfile0.txt" | sed 's/"//g')
-	echo ${TEMPVAR:21} >> "sex-pins-data$NUMBERINPUT-$DATAFILENUMBER.txt"
-	LINECOUNT=$(($LINECOUNT+1))
-	echo "OK! got $LINECOUNT lines!"
+	if [[ -n ${TEMPVAR:21} ]]; then
+		echo ${TEMPVAR:21} >> "sex-pins-data$NUMBERINPUT-$DATAFILENUMBER.txt"
+		LINECOUNT=$(($LINECOUNT+1))
+		echo "success!! got $LINECOUNT lines of image links so far!"
+	else
+		echo $DEFAULT_PATH >> "sex-pins-data$NUMBERINPUT-$DATAFILENUMBER.txt"
+		echo "bummer! got no link. appending default image path"
+	fi
 done
 echo "removing 'tempfile.html'"
 rm tempfile.html
