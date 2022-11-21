@@ -14,7 +14,6 @@ for i in $(seq 1 $LINKSFILENUMBER); do
 		echo "or get 'sex-pins-links$i.txt'?"
 	fi
 done
-LINKSFILENUMBER=$(($LINKSFILENUMBER+1))
 echo "input which number.."
 read NUMBERINPUT
 if [[ $NUMBERINPUT -gt $LINKSFILENUMBER  ]]; then
